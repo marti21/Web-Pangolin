@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{user.username}}</title>
+    <link href='{% static "css/own_profile2.css" %}' rel="stylesheet" type="text/css">
+</head>
+    <body>
+
+        <header id="main-header">
+            <a id="logo-header" href="{% url 'home' %}">
+                
+                <svg viewBox="0 0 960 300">
+                    <symbol id="s-text">
+                        <text text-anchor="middle" x="50%" y="80%">Pangolin</text>
+                    </symbol>
+                
+                    <g class = "g-ants">
+                        <use xlink:href="#s-text" class="text-copy"></use>
+                        <use xlink:href="#s-text" class="text-copy"></use>
+                        <use xlink:href="#s-text" class="text-copy"></use>
+                        <use xlink:href="#s-text" class="text-copy"></use>
+                        <use xlink:href="#s-text" class="text-copy"></use>
+                    </g>
+                </svg>
+                
+            </a>
+    
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{{ userLogged.get_absolute_url }}">{{userLogged.username}}</a></li>
+                    <li><a href="{% url 'add_friends' %}">Add Friends</a></li>
+                    <li><a href="{% url 'add_post' %}">Add post</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+            </nav>
+    
+        </header>
+
+    <div id="container">
+
+        <div class="clearfix"></div>
+        
+        <section id="content">
+            <h1 class="title">Own Profile</h1>
+
+                <div class="divUser">
+                    <img class="imageUser" src= "{{ userLogged.image.url }}">
+                    
+                    <h1>{{userLogged.username}}</h1>
+                    <p>Name: {{userLogged.get_full_name}}</p>
+                    <p>Date: {{userLogged.my_date_field}}</p>
+                    <p>Email: {{userLogged.email}}</p>
+                    <p>Joined: {{userLogged.date_joined}}</p>
+                </div>
+                                    
+            <ul>
+                <li><a href="{% url 'change_password' %}">Change Password</a></li>
+                <li><a href="{% url 'change_profile' %}">Edit Profile</a></li>
+            </ul>
+            
+            <h2 id="titlePost"> Posts </h2>
+
+            {% for post in posts %}
+                <article class="article">
+                    <a href="{{ post.get_absolute_url }}">
+                        <h2 class="articlePostTitle">{{post.title}}</h2>
+                    </a>
+                    <p>{{post.description}}</p>
+
+                    {% if post.image.url != None %}
+                        <p class="imagePost" ><img src="{{ post.image.url }}"></p>
+                    {% endif %}
+                    <h4>Created At: {{post.created_at}}</h4>
+                   
+                </article>
+            {% endfor %}
+
+
+        </section>
+            
+        <aside>
+            <article class="asideArticle">
+                <h1>Notifications</h1>
+
+                <div>
+                    {% if listRequestFriends %}
+                    {% for friend_request in listRequestFriends %}
+                            <p id="articleImage"><img src= "{{ friend_request.from_user.image.url }}"></p>
+                            <p>
+                                <h2><a href="{{ friend_request.from_user.get_absolute_url }}">{{friend_request.from_user.username}}</a></h2>
+                                <h2>Name: {{friend_request.from_user.get_full_name}}</h2>
+                                <p>
+                                    <a href="/accept_friend_request/{{friend_request.id}}">Accept friend request</a>
+                                </p>
+                                <p id="lastp">
+                                    <a href="/reject_friend_request/{{friend_request.id}}">Reject friend request</a>
+                                </p>
+                            </p>
+                        
+                    {% endfor %}
+                    {% else %}
+                        <p>Empty</p>
+                    {% endif %}
+
+                </div>
+
+            </article>
+
+            <article class="asideArticle">
+                <h1>Friends</h1>
+                <div>
+                    {% if listaDeAmigos %}
+                    {% for user in listaDeAmigos %}
+                        <p id="articleImage"><img src= "{{ user.image.url }}"></p>
+                        <p>
+                            <h2><a href="{{ user.get_absolute_url }}">{{user.username}}</a></h2>
+                            <p id="lastp">
+                                <a href="/delete_friend/{{user.username}}">Delete friend</a>
+                            </p>
+                        </p>
+                    {% endfor %}
+                    
+                    {% else %}
+                        <p>No friends added!</p>
+
+                    {% endif %}
+
+                </div>
+              
+            </article>
+        </aside>
+
+        <div class="clearfix"></div>
+
+    </div>
+
+    </body>
+</html>

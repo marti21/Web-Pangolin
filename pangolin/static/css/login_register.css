@@ -1,0 +1,50 @@
+h1 {
+    text-align: center;
+    margin-bottom: 1.4rem;
+    font-family:'Lucida Sans';
+    font-size: 3rem;
+}
+
+.signUpDiv{
+    color:black;
+    width: 55%;
+    height: auto;
+    background-color:rgb(207, 207, 207);
+    border-radius:10px;
+    padding:26px;
+    float: left;
+    margin-left: 20%;
+}
+
+.signUpForm {
+    font-family: 'Franklin Gothic Medium';
+    display: table-cell;
+}
+
+.signUpButton{
+    background-color: #0b76a6;
+    border-radius: 3px;
+    padding: 5px;
+    width: 200px;
+    color: white;
+}
+
+.loginDiv{
+    color:black;
+    width: 20%;
+    height: auto;
+    background-color:rgb(207, 207, 207);
+    border-radius:10px;
+    padding: 56px;
+    float: left;
+    margin-left: 36.5%;
+}
+
+.LoginButton{
+    background-color: #0b76a6;
+    border-radius: 3px;
+    padding: 5px;
+    width: 110px;
+    margin-top: 23px;
+    color: white;
+}

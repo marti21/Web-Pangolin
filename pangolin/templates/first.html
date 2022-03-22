@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head><title>Pangolin</title>
+    <link href='{% static "css/first.css" %}' rel="stylesheet" type="text/css">
+</head>
+<body>
+    <svg viewBox="0 0 960 300">
+        <symbol id="s-text">
+            <text text-anchor="middle" x="50%" y="80%">Pangolin</text>
+        </symbol>
+    
+        <g class = "g-ants">
+            <use xlink:href="#s-text" class="text-copy"></use>
+            <use xlink:href="#s-text" class="text-copy"></use>
+            <use xlink:href="#s-text" class="text-copy"></use>
+            <use xlink:href="#s-text" class="text-copy"></use>
+            <use xlink:href="#s-text" class="text-copy"></use>
+        </g>
+    </svg>
+
+    <div class="divButt">
+        <div class="divReg">
+            <form action="{% url 'registration' %}">
+                <button type="submit">Create Account</button>
+            </form>
+        </div>
+        
+        <div class="divLog">
+            <form action="{% url 'login' %}">
+            <button type="submit">Login</button>
+        </form></div>
+        
+    </div>
+   
+
+
+
+    
+</body>
+</html>

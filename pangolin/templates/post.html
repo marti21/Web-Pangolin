@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{post.title}}</title>
+    <link href='{% static "css/post.css" %}' rel="stylesheet" type="text/css">
+</head>
+<body>
+
+    <header id="main-header">
+        <a id="logo-header" href="{% url 'home' %}">
+            
+            <svg viewBox="0 0 960 300">
+                <symbol id="s-text">
+                    <text text-anchor="middle" x="50%" y="80%">Pangolin</text>
+                </symbol>
+            
+                <g class = "g-ants">
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                </g>
+            </svg>
+            
+        </a>
+
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{{ userLogged.get_absolute_url }}">{{userLogged.username}}</a></li>
+                <li><a href="{% url 'add_friends' %}">Add Friends</a></li>
+                <li><a href="{% url 'add_post' %}">Add post</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    
+    <div class="divPost">
+        <h1 class="postTitle">{{post.title}}</h1>
+        <h3><a class="autorPost" href="{{ postAuthor.get_absolute_url }}">{{post.author}}</a></h3>
+        <p class="scrollDiv">{{post.description}}</p>
+            
+        {% if post.image.url != None %}
+            <img class="imagenPost" src= "{{ post.image.url }}">
+        {% endif %}
+
+        <p>{{post.created_at}}</p>
+
+        {% if request.user == post.author %}
+            <form action="{{ post.get_absolute_url4 }}">
+                <button class="postButton2" type="submit">Edit</button>
+            </form>
+
+            <form action="{{ post.get_absolute_url5 }}">
+                <button class="postButton2" type="submit">Delete</button>
+            </form>
+        {% endif %}
+
+        <h4>Comments:</h4>
+
+        {% if comments %}
+        {% for comentario in comments %}
+            <article class="article">
+                <h4>{{comentario.author.username}}</h4>
+                <p>{{comentario.text}}</p>
+                <p>{{comentario.created_at}}</p>                
+            </article>
+        {% endfor %}
+
+        {% else %}
+        <p>No comments</p>
+        {% endif %}
+
+        {% if userLogged in listFriends or post.author == request.user %}
+            <form action="{{ post.get_absolute_url3 }}">
+                <input class="comentarioPost" name="comentario" type="text" placeholder="Comment" aria-label="text">
+                <button class="postButton2" type="submit">Comment</button>
+            </form>
+        {% endif %}
+
+    </div>
+
+</body>
+</html>

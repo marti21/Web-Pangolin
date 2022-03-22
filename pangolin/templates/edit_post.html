@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit post</title>
+    <link href='{% static "css/post.css" %}' rel="stylesheet" type="text/css">
+</head>
+<body>
+
+    <header id="main-header">
+        <a id="logo-header" href="{% url 'home' %}">
+            
+            <svg viewBox="0 0 960 300">
+                <symbol id="s-text">
+                    <text text-anchor="middle" x="50%" y="80%">Pangolin</text>
+                </symbol>
+            
+                <g class = "g-ants">
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                </g>
+            </svg>
+            
+        </a>
+
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{{ user.get_absolute_url }}">{{user.username}}</a></li>
+                <li><a href="{% url 'add_friends' %}">Add Friends</a></li>
+                <li><a href="{% url 'add_post' %}">Add post</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+        <h1 class="titlePost">Edit post!</h1>
+        <div class="postDiv" > 
+            <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+                {{ form.as_p }}
+                <input class="postButton" type="submit" value="Save"/>
+            </form>
+        </div>
+    
+    
+</body>
+</html>

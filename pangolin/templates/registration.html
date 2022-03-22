@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head><title>Register</title>
+    <link href='{% static "css/login_register.css" %}' rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <h1>Registration</h1>
+    <div class="signUpDiv"> 
+        <form class="signUpForm" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+            {{ form.as_p }}
+            <input class="signUpButton" type="submit" value="Create"/>
+        </form>
+    </div>
+    </body>
+</body>
+</html>

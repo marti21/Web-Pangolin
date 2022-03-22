@@ -1,0 +1,223 @@
+#main-header {
+	background: #333;
+	color: white;
+	height: 70px;
+
+    width: 100%; /* hacemos que la cabecera ocupe el ancho completo de la página */
+	left: 0; /* Posicionamos la cabecera al lado izquierdo */
+	top: 0; /* Posicionamos la cabecera pegada arriba */
+	position: fixed; /* Hacemos que la cabecera tenga una posición fija */
+	border-bottom: gray solid 4px;
+}	
+	#main-header a {
+		color: white;
+	}
+
+#logo-header {
+	float: left;
+	padding: 9px 0 0 20px;
+	text-decoration: none;
+	margin-left: 65px;
+}
+	#logo-header:hover {
+		color: #0b76a6;
+	}
+	
+	#logo-header .site-name {
+		display: block;
+		font-weight: 700;
+		font-size: 1.6em;
+		
+	}
+	
+	#logo-header .site-desc {
+		display: block;
+		font-weight: 300;
+		font-size: 0.8em;
+		color: #999;
+	}
+	
+
+nav {
+	float: right;
+}
+	nav ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		padding-right: 20px;
+	}
+	
+		nav ul li {
+			display: inline-block;
+			line-height: 15px;
+			margin-top: 25px;
+		}
+			
+			nav ul li a {
+				display: block;
+				padding: 4px 10px;
+				text-decoration: none;
+				font-size: 1rem;
+			}
+			
+				nav ul li a:hover {
+					background: #0b76a6;
+					border-radius: 2rem;
+				}
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+svg {
+    display: block;
+    font: 15.5em 'Montserrat';
+    width: 50%;
+    height: 50%;
+    margin: 0 auto;
+    
+}
+
+.text-copy {
+    fill: none;
+    stroke: white;
+    stroke-dasharray: 6% 29%;
+    stroke-width: 5px;
+    stroke-dashoffset: 0%;
+    animation: stroke-offset 5.5s infinite linear;
+}
+
+.text-copy:nth-child(1){
+    stroke: #2097ac;
+    animation-delay: -1;
+}
+
+.text-copy:nth-child(2){
+    stroke: #0b76a6;
+    animation-delay: -2s;
+}
+
+.text-copy:nth-child(3){
+    stroke: #d9d5e6;
+    animation-delay: -3s;
+}
+
+.text-copy:nth-child(4){
+    stroke: #a6b7cc;
+    animation-delay: -4s;
+}
+
+.text-copy:nth-child(5){
+    stroke: #3b6aa0;
+    animation-delay: -5s;
+}
+
+@keyframes stroke-offset{
+    100% {stroke-dashoffset: -35%;}
+}
+
+
+
+body{
+	font-family: Arial, Helvetica, sans-serif;
+	margin-top: 24px;
+}
+
+
+.titlePost {
+    text-align: center;
+    font-family:'Lucida Sans';
+    font-size: 3rem;
+    color: black;
+    margin-top: 113px;
+}
+
+.postDiv{
+    color:black;
+    width: 20%;
+    height: auto;
+    background-color:rgb(207, 207, 207);
+    border-radius:10px;
+    padding: 56px;
+    float: left;
+    margin-left: 36.5%;
+}
+
+.postButton{
+    background-color: #0b76a6;
+    border-radius: 3px;
+    padding: 5px;
+    width: 110px;
+    margin-top: 23px;
+    color: white;
+}
+
+.divPost{
+    color:black;
+    width: 40%;
+    height: auto;
+    background-color:rgb(207, 207, 207);
+    border-radius:10px;
+    padding-right: 56px;
+    padding-left: 56px;
+    padding-bottom: 56px;
+    float: left;
+    margin-left: 27%;
+    margin-top: 80px;
+}
+
+.autorPost{
+    text-decoration: none;
+}
+
+
+
+.scrollDiv{
+    overflow-y: scroll;
+    word-break:break-all;
+    max-height: 250px;
+}
+
+h3{
+    margin-bottom: 30px;
+}
+
+.imagenPost{
+    width: 50%;
+}
+
+.article{
+	color: black;
+	margin-top: 15px;
+    margin-bottom: 15px;
+    padding-left: 15px;
+	border: 1px solid black;
+    border-radius: 13px;
+    margin-right: 15px;
+}
+
+.comentarioPost{
+    width:50%;
+    height: 2.5rem;
+}
+
+.botonCambiar{
+    margin-bottom: 5px;
+}
+
+.postButton2{
+    background-color: #0b76a6;
+    border-radius: 3px;
+    padding: 5px;
+    width: 110px;
+    margin-top: 10px;
+    color: white;
+}
+
+.postTitle{
+    text-align: center;
+    font-family:'Lucida Sans';
+    font-size: 3rem;
+    color: black;
+}
