@@ -1,1 +1,1 @@
-web: gunicorn pangolin.wsgi --log-file -
+web: gunicorn practica1.wsgi --log-file -
